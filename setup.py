@@ -15,7 +15,7 @@ requires = readfile("requirements.txt", split=True)
 license = readfile("LICENSE")
 
 setup(name=u'mapclientplugins.fieldworkmodeldictsourcestep',
-    version='0.0.0',
+    version='0.1.0',
     description='',
     long_description='
 '.join(readme) + license,
@@ -26,7 +26,7 @@ setup(name=u'mapclientplugins.fieldworkmodeldictsourcestep',
     ],
     author=u'Ju Zhang',
     author_email='',
-    url='',
+    url='https://github.com/mapclient-plugins/fieldworkmodeldictsourcestep',
     license='APACHE',
     packages=find_packages(exclude=['ez_setup',]),
     namespace_packages=['mapclientplugins'],
