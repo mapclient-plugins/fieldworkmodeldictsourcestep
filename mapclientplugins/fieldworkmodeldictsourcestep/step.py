@@ -7,6 +7,7 @@ import json
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkmodeldictsourcestep.configuredialog import ConfigureDialog
 
+import os
 import configobj
 from gias2.fieldwork.field import geometric_field
 
@@ -111,22 +112,37 @@ class FieldworkModelDictSourceStep(WorkflowStepMountPoint):
         """
         Read in the ini file
         """
-        modelPathCfgPath = self._config['Config File']
+
+        modelPathCfgPath = os.path.join(
+                            self._location,
+                            self._config['Config File'],
+                            )
+        print('config files: {}'.format(modelPathCfgPath))
         if (modelPathCfgPath is None) or (len(modelPathCfgPath)==0):
             raise RuntimeError('Config File must be defined')
 
         self._modelPathDict = configobj.ConfigObj(
                     infile=modelPathCfgPath,
                     raise_errors=True,
-                    unrepr=True
+                    unrepr=False
                     )
+
+        if (self._modelPathDict is None) or (len(self._modelPathDict)==0):
+            raise RuntimeError('No model file paths defined')
+
+        print('model paths: {}'.format(self._modelPathDict))
 
     def _loadModels(self):
         self._modelDict = {}
         for modelName in self._modelPathDict:
-            gpath = self._modelPathDict[modelName].get('geof')
-            epath = self._modelPathDict[modelName].get('ens')
-            mpath = self._modelPathDict[modelName].get('mesh')
+            
+            gpath = os.path.join(self._location, self._modelPathDict[modelName].get('geof'))
+            epath = os.path.join(self._location, self._modelPathDict[modelName].get('ens'))
+            mpath = os.path.join(self._location, self._modelPathDict[modelName].get('mesh'))
+
+            print('loading {} from:'.format(modelName))
+            print('{}\n{}\n{}\n'.format(gpath,epath,mpath))
+
             if (gpath is None) or (epath is None) or (mpath is None):
                 raise RuntimeError('Invalid config file format')
 
