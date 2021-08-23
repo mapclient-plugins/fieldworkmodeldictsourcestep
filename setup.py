@@ -15,7 +15,7 @@ requires = readfile("requirements.txt", split=True)
 license = readfile("LICENSE")
 
 setup(name=u'mapclientplugins.fieldworkmodeldictsourcestep',
-    version='0.1.2',
+    version='0.2.0',
     description='',
     long_description='\n'.join(readme) + license,
     classifiers=[
