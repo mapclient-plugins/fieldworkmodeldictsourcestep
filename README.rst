@@ -6,7 +6,7 @@ MAP Client plugin to read in a list of named fieldwork models and output a dicti
 Require
 -------
 
--  GIAS2 : https://bitbucket.org/jangle/gias2
+-  GIAS3 - Fieldwork: https://github.com/musculoskeletal/gias3.fieldwork
 
 Inputs
 ------
