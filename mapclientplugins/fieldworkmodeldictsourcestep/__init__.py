@@ -2,7 +2,7 @@
 MAP Client Plugin
 '''
 
-__version__ = '0.1.1'
+__version__ = '0.1.3'
 __author__ = 'Ju Zhang'
 __stepname__ = 'Fieldwork Model Dict Source'
 __location__ = 'https://github.com/mapclient-plugins/fieldworkmodeldictsourcestep/archive/v0.1.1.zip'
